@@ -1,4 +1,4 @@
-import shoe1 from "./images/shoe1.jpg";
+import shoe1 from "../images/shoe1.jpg";
 import shoe2 from "../images/shoe2.jpg";
 import shoe3 from "../images/shoe3.jpg";
 import shoe4 from "../images/shoe4.jpg";
