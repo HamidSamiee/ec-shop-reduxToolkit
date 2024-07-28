@@ -48,12 +48,12 @@ const Slider = () => {
                 <button onClick={()=>dispatch(nextSlide(sliderIndex + 1))}
                   className="absolute top-1/2 -translate-y-1/2 right-4 bg-white rounded-full p-2 flex items-center justify-center hover:bg-green-100"
                 >
-                        <MdArrowForwardIos />
+                        <MdArrowForwardIos className="w-3 h-3" />
                 </button>
-                <button onClick={()=>dispatch(prevSlide(sliderIndex  - 1))}
+                <button onClick={()=>dispatch(prevSlide(sliderIndex - 1))}
                   className="absolute top-1/2 -translate-y-1/2 left-4 bg-white rounded-full p-2 flex items-center justify-center hover:bg-green-100"
                 >
-                        <MdArrowBackIos />
+                        <MdArrowBackIos className='pl-1' />
                 </button>
           </div>
     </section >
