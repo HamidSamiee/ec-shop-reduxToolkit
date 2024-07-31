@@ -1,20 +1,30 @@
 import { Button } from "@material-tailwind/react"
 import clothes from "../../assets/images/clothes.webp"
+import { useDispatch } from "react-redux"
+import { filterProducts } from "../../features/slices/ProductsSlice"
+import { Link } from "react-router-dom"
 const buttons=[
     "T-Shirts","Hoodies","Shoes","Dresses","Jeans","Jackets","Bags","Suits",
 ]
 
 const NavigationBtn = () => {
-  return (
+ 
+const dispatch=useDispatch();
+
+    return (
     <section>
-        <div className="flex items-center justify-center py-8 ">
+        <div className="flex items-center justify-center py-8 overflow-x-auto">
             {
                 buttons.map((item,index)=>{
-                    return <Button size="lg" variant="outlined" ripple={true} className="mr-4 hover:bg-green-300 duration-300 ease-in-out" key={index}>
+                    return <Link to={`/filteredProducts/${item}`}  key={index} >
+                        <Button
+                                onClick={()=>dispatch(filterProducts(item))}
+                                size="lg" variant="outlined" ripple={true} className="mr-4 hover:bg-green-300 duration-300 ease-in-out">
                                 {
                                     item
                                 }
-                    </Button>
+                        </Button>
+                    </Link>
                 })
             }
         </div>
