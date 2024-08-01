@@ -1,7 +1,8 @@
 import { Button, Tooltip } from "@material-tailwind/react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+
+import { addToCart } from "../../features/slices/CartSlice";
 
 
 const SingleProduct = () => {
@@ -14,6 +15,9 @@ const SingleProduct = () => {
    
     const [size, setSize] = useState(defaultSize)
     const [color, setColor] = useState(defaultColor)
+
+    
+    const dispatch=useDispatch()
 
   return (
     <section className="container xl:max-w-screen-xl p-4 ">
@@ -86,6 +90,17 @@ const SingleProduct = () => {
                             variant="outlined"
                             ripple 
                             fullWidth
+                            onClick={()=>dispatch(addToCart({
+                                id: product.id,
+                                name: product.name,
+                                size: size ,
+                                color: color,
+                                img: product.img,
+                                text: product.text,
+                                price: product.price,
+                                amount: 1,
+                                totalPrice: product.price
+                            }))}
                            >
                             Add to cart
                            </Button>
