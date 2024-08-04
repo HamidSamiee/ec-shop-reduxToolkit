@@ -1,8 +1,17 @@
-
+import ProductSection from "../../components/ProductSection/ProductSection"
+import Slider from "../../components/Slider/Slider"
+import NavigationBtn from "../../components/NavigationBtn/NavigationBtn"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <Slider />
+      <NavigationBtn />
+      <div className="container px-4">
+        <ProductSection/>
+      </div>
+    </>
+    
   )
 }
 

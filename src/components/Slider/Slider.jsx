@@ -3,15 +3,25 @@ import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import { sliderData } from "../../assets/data/dummydata";
 import { dotSlide, nextSlide,prevSlide } from "../../features/slices/SliderSlice"
 import { useDispatch , useSelector } from "react-redux"
+import { useEffect } from "react";
 
 const Slider = () => {
 
  const sliderIndex=useSelector((state)=>state.slider.value);
  const dispatch=useDispatch();
  
+useEffect(() => {
+  
+  setTimeout(() => {
+    dispatch(nextSlide(sliderIndex + 1))
+  }, 8000);
+
+}, [dispatch,sliderIndex])
+
+
   return (
     <section className="h-[850px] relative mb-4 ">
-          <div className="">
+          <div  className="">
                 {
                     sliderData.map((slide)=>{
                       return<div className={` ${parseInt(slide.id) === sliderIndex ? 'opacity-100 duration-700 scale-100 ease-in-out' : 'opacity-0 duration-700 scale-95 ease-in-out'}`} key={slide.id}>

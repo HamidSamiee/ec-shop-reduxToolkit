@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import ProductCard from "./ProductCard";
+import Slider from "../../components/Slider/Slider";
+import NavigationBtn from "../../components/NavigationBtn/NavigationBtn";
 
 
 
@@ -14,8 +16,10 @@ const FilteredProducts = () => {
   // console.log(products)
   // console.log(type)
   return (
-    <section className="p-4">
-      <div className="container xl:max-w-screen-xl pt-16">
+    <section className="">
+      <Slider />
+      <NavigationBtn />
+      <div className="container xl:max-w-screen-xl pt-16 p-4">
           <div className="pl-14">
             <h1 className="text-4xl font-sans font-bold tracking-normal leading-none text-gray-600">
               {type}

@@ -1,6 +1,6 @@
-import Slider from "../components/Slider/Slider";
+
 import Header from "../components/Header/Header";
-import NavigationBtn from "../components/NavigationBtn/NavigationBtn";
+import Footer from "../components/Footer/Footer";
 
 
 const Layout = (Props) => {
@@ -10,13 +10,12 @@ const Layout = (Props) => {
   return (
     <section>
         <Header />
-        <Slider />
-        <NavigationBtn />
-        <div className="container px-4">
+        <div className="">
                 {
                 children
                 }
-        </div>   
+        </div>
+        <Footer />   
     </section>
   )
 }
