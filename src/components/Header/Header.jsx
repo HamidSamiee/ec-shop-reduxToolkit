@@ -3,14 +3,22 @@ import { Link } from "react-router-dom"
 import logo from '../../assets/logo.png'
 import { useState } from "react";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "@material-tailwind/react";
+import { FaUserAlt } from "react-icons/fa";
+import { logout } from "../../features/slices/AuthSlice";
+import { GiExitDoor } from "react-icons/gi";
 
 const Header = () => {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
-    const cart=useSelector(state => state.cart.cart)
+    const cart=useSelector(state => state.cart.cart);
+    const{authUser}=useSelector(state => state.user.user)
+    const user=useSelector(state => state.user.user)
+    const dispatch=useDispatch()
+    console.log(user.username
+    )
 
   return (
     <header className="">
@@ -24,9 +32,18 @@ const Header = () => {
                             <img src={logo} alt="store" className="h-20 w-full" />
                         </div>
                         <nav className="flex items-center gap-x-5">
-                                <Link to='/' className="text-black font-sans tracking-normal leading-none text-base font-medium text-center mr-4">
-                                        Logout
-                                </Link>
+                                {
+                                            authUser ? 
+                                            <Tooltip  content="Logout" placement="bottom" >
+                                                <button className=""  onClick={()=>dispatch(logout(user))}>
+                                                    <GiExitDoor className="text-red-500 w-6 h-6 scale-x-[-1]" />
+                                                </button>
+                                            </Tooltip>
+                                            : 
+                                            <Link to='/login' className="text-black font-sans tracking-normal leading-none text-base font-medium text-center mr-4">
+                                                    LogIn
+                                            </Link>
+                                 }
                                 <div className="flex items-center gap-x-2">
                                     <CiHeart className="w-6 h-6"/>   <p className="text-black font-sans tracking-normal leading-none text-base font-medium text-center">Whish List</p>
                                 </div>
@@ -57,6 +74,13 @@ const Header = () => {
                                     </Tooltip>    
                                 }
                                 
+                                {
+                                    authUser &&
+                                    <div className="flex items-center gap-x-2">
+                                        Hi {user.username} 
+                                        <FaUserAlt className="w-5 h-5" />
+                                    </div>
+                                }
                                 
                         </nav>
                     </div>

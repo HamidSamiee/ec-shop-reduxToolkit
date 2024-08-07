@@ -9,10 +9,13 @@ import {
     Button,
   } from "@material-tailwind/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/slices/AuthSlice";
    
 
 const Login = () => {
 
+    const dispatch=useDispatch();
     const [loginData, setLoginData] = useState({
         username:'',
         password:'',
@@ -26,9 +29,7 @@ const Login = () => {
         console.log(loginData)
     }
 
-    const submitLogin=()=>{
-        console.log('loginData')
-    }
+    
 
   return (
     <section className=" w-full flex items-center justify-center" >
@@ -43,14 +44,14 @@ const Login = () => {
                 </Typography>
             </CardHeader>
             <CardBody className="flex flex-col gap-4">
-                <Input label="Email" size="lg"  type="text" value={loginData.username} name="username" onChange={handleChange} />
+                <Input label="Username" size="lg"  type="text" value={loginData.username} name="username" onChange={handleChange} />
                 <Input label="Password" size="lg" value={loginData.password} type="password" name="password" onChange={handleChange} />
                 <div className="-ml-2.5">
                 <Checkbox label="Remember Me" />
                 </div>
             </CardBody>
             <CardFooter className="pt-0">
-                <Button variant="gradient" fullWidth onSubmit={()=>console.log('first')}>
+                <Button onClick={()=>dispatch(login(loginData))} variant="gradient" fullWidth onSubmit={()=>console.log('first')}>
                 Sign In
                 </Button>
                 <Typography variant="small" className="mt-6 flex justify-center">
